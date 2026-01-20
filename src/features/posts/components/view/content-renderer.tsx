@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import type { JSONContent } from "@tiptap/react";
 import { renderReact } from "@/features/posts/components/view/render";
+import { cn } from "@/lib/utils";
 
 interface ContentRendererProps {
   content: JSONContent | null;
@@ -21,5 +22,5 @@ export function ContentRenderer({ content, className }: ContentRendererProps) {
     return null;
   }
 
-  return <div className={className}>{renderedContent}</div>;
+  return <div className={cn("ProseMirror", className)}>{renderedContent}</div>;
 }

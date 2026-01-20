@@ -29,6 +29,40 @@ export function renderReact(content: JSONContent) {
 
           return <CodeBlock code={code} language={language} />;
         },
+        tableCell: ({ node, children }) => {
+          const attrs = node.attrs as {
+            colspan?: number;
+            rowspan?: number;
+            colwidth?: Array<number>;
+            style?: string;
+          };
+          return (
+            <td
+              colSpan={attrs.colspan}
+              rowSpan={attrs.rowspan}
+              style={attrs.style ? { width: attrs.style } : undefined}
+            >
+              {children}
+            </td>
+          );
+        },
+        tableHeader: ({ node, children }) => {
+          const attrs = node.attrs as {
+            colspan?: number;
+            rowspan?: number;
+            colwidth?: Array<number>;
+            style?: string;
+          };
+          return (
+            <th
+              colSpan={attrs.colspan}
+              rowSpan={attrs.rowspan}
+              style={attrs.style ? { width: attrs.style } : undefined}
+            >
+              {children}
+            </th>
+          );
+        },
       },
     },
   });
